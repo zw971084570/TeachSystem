@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="educationalManager" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=educationalManager;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="educationalManagerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.course" Member="course">
+    <Type Name="course">
+      <Column Name="cs_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cs_name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="cs_stid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cs_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="course_score" Member="score" ThisKey="cs_id" OtherKey="sc_csid" Type="score" />
+      <Association Name="semester_course" Member="semester" ThisKey="cs_stid" OtherKey="st_id" Type="semester" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.department" Member="department">
+    <Type Name="department">
+      <Column Name="dp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dp_name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="dp_type" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="dp_cretateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="dp_leader" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="dp_campus" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="dp_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="department_teacher" Member="teacher" ThisKey="dp_id" OtherKey="th_dpid" Type="teacher" />
+      <Association Name="department_specialty" Member="specialty" ThisKey="dp_id" OtherKey="sp_dpid" Type="specialty" />
+    </Type>
+  </Table>
+  <Table Name="dbo.grade" Member="grade">
+    <Type Name="grade">
+      <Column Name="gd_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="gd_name" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="gd_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="grade_specialty" Member="specialty" ThisKey="gd_id" OtherKey="sp_gdid" Type="specialty" />
+    </Type>
+  </Table>
+  <Table Name="dbo.semester" Member="semester">
+    <Type Name="semester">
+      <Column Name="st_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="st_name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="st_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="semester_course" Member="course" ThisKey="st_id" OtherKey="cs_stid" Type="course" />
+    </Type>
+  </Table>
+  <Table Name="dbo.teacher" Member="teacher">
+    <Type Name="teacher">
+      <Column Name="th_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="th_password" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="th_name" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="th_role" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="th_sex" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="th_education" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="th_title" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="th_sSpecialty" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="th_nation" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="th_address" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="th_tel" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="th_politicalOutlook" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="th_cid" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="th_school" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="th_dpid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="th_nowAddress" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="th_birth" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="th_joinTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="th_classes" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="th_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="department_teacher" Member="department" ThisKey="th_dpid" OtherKey="dp_id" Type="department" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.webInfo" Member="webInfo">
+    <Type Name="webInfo">
+      <Column Name="web_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="web_copyright" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="web_address" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="web_postcode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="web_tel" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="web_keywords" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="web_desc" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="web_managerUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="web_createTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="web_modifyTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="web_modifyIP" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.menuInfo" Member="menuInfo">
+    <Type Name="menuInfo">
+      <Column Name="mn_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="mn_name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="mn_pId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mn_url" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="mn_remark" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="menuInfo_powers" Member="powers" ThisKey="mn_id" OtherKey="pr_muId" Type="powers" />
+    </Type>
+  </Table>
+  <Table Name="dbo.powers" Member="powers">
+    <Type Name="powers">
+      <Column Name="pr_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pr_roles" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pr_muId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pr_remark" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="menuInfo_powers" Member="menuInfo" ThisKey="pr_muId" OtherKey="mn_id" Type="menuInfo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.specialty" Member="specialty">
+    <Type Name="specialty">
+      <Column Name="sp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sp_name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="sp_dpid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sp_gdid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sp_csids" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="sp_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="specialty_classes" Member="classes" ThisKey="sp_id" OtherKey="cl_spid" Type="classes" />
+      <Association Name="department_specialty" Member="department" ThisKey="sp_dpid" OtherKey="dp_id" Type="department" IsForeignKey="true" />
+      <Association Name="grade_specialty" Member="grade" ThisKey="sp_gdid" OtherKey="gd_id" Type="grade" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.classes" Member="classes">
+    <Type Name="classes">
+      <Column Name="cl_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cl_name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="cl_spid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cl_room" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="cl_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="classes_student" Member="student" ThisKey="cl_id" OtherKey="stu_clid" Type="student" />
+      <Association Name="specialty_classes" Member="specialty" ThisKey="cl_spid" OtherKey="sp_id" Type="specialty" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.student" Member="student">
+    <Type Name="student">
+      <Column Name="stu_num" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="stu_password" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="stu_name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="stu_sex" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="stu_birth" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="stu_nation" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="stu_cid" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="stu_tel" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="stu_address" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="stu_clid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="stu_politicalOutlook" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="stu_joinTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="stu_highSchool" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="stu_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="student_score" Member="score" ThisKey="stu_num" OtherKey="sc_stuNum" Type="score" />
+      <Association Name="classes_student" Member="classes" ThisKey="stu_clid" OtherKey="cl_id" Type="classes" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.score" Member="score">
+    <Type Name="score">
+      <Column Name="sc_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sc_stuNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sc_csid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sc_usuallyScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sc_endScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sc_poportion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sc_sumScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sc_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="course_score" Member="course" ThisKey="sc_csid" OtherKey="cs_id" Type="course" IsForeignKey="true" />
+      <Association Name="student_score" Member="student" ThisKey="sc_stuNum" OtherKey="stu_num" Type="student" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

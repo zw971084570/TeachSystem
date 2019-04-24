@@ -1,0 +1,122 @@
+#navbar
+{
+    margin-top: 18px;
+}
+#navtop
+{
+    min-height: 75px;
+}
+#logo
+{
+    margin-top: -10px;
+}
+.cl
+{
+    border-top: 1px solid #8a6d3b;
+    padding: 0px;
+    margin:0px;
+    margin:0 2px;
+}
+.cl li
+{
+    list-style: none;
+    font-size: 14px;
+    margin-left: 3px;
+}
+.menus
+{
+    font-weight: bolder;
+}
+html,body,.all,.contents,#left-menu,#right-content
+{
+    height: 100%;
+}
+.contents,#left-menu,#right-content
+{
+    height: 100%;
+}
+/** {margin:0;padding:0;}*/
+#left-menu
+{
+    max-width:220px;
+    min-width: 15%;
+    min-height:100%;
+    height: auto;
+    background-color:#373737;
+    z-index:-1;
+    float: left;
+    padding-top:30px;
+
+}
+#xs-menu
+{
+    background-color:#373737;
+    }
+
+a:hover ,a:focus{text-decoration:none}
+.mobile-nav ul li a {color:gray;display:block;padding:1em 5%;    border-top:1px solid #4f4f4f;border-bottom:1px solid #292929;transition:all 0.2s ease-out;cursor:pointer;}
+.mobile-nav ul
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*#left-menu {width:220px;background-color:#373737;z-index:9999;transition:all 0.3s ease-in;}*/
+.mobile-nav ul li a:hover {background-color: #23A1F6;color: #ffffff;}
+.show-nav {transform:translateX(0);}
+.hide-nav {transform:translateX(-220px);} /*侧滑关键*/
+.mobile-nav-taggle {height:35px;line-height:35px;width:35px;background-color:#23A1F6;color:#ffffff;display:inline-block;text-align:center;cursor:pointer}
+.nav.avbar-inverse{position:relative;}
+.nav-btn {position:absolute;right:20px;top:20px;}
+
+.all
+{
+    width: 100%;
+    min-width: 600px;
+}
+
+#right-content
+{
+    min-width: 85%;
+    background-color: #ffffff;
+    height: 100%;
+    float: left;
+}
+.contents
+{
+    padding-top:55px ;
+}
+@media screen and (max-width:767px)
+{
+#right-content{width: 100%;}
+}
+@media screen and (max-width:938px)
+{
+    .contents{ padding-top:70px;}
+}
+@media(max-width:@screen-sm-min)
+{
+   #logo{ display:none;}
+}
+.edit_a:
+{
+    border: none;
+}
+.txt
+{
+    width:auto;
+    margin-left:10px;
+}
+table
+{
+    text-align:center;
+}
+table caption
+{
+        font-size:20px; 
+        padding-left:30px;
+}
+table tr th
+{
+      text-align:center;
+}
